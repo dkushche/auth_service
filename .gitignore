@@ -1,0 +1,16 @@
+*
+
+!internal/
+!internal/*
+!internal/account
+!internal/account/*
+!internal/token
+!internal/token/*
+
+!.gitignore
+
+!Dockerfile
+!go.mod
+!go.sum
+!main.go
+!README.md
