@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/dkushche/roothazardlab_backend/internal/account"
-	"github.com/dkushche/roothazardlab_backend/internal/token"
+	"github.com/dkushche/auth_service/internal/account"
+	"github.com/dkushche/auth_service/internal/token"
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 )

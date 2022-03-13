@@ -12,7 +12,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/dkushche/roothazardlab_backend/internal/account"
+	"github.com/dkushche/auth_service/internal/account"
 	"github.com/lestrrat-go/jwx/jwa"
 	"github.com/lestrrat-go/jwx/jwt"
 )

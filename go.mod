@@ -1,4 +1,4 @@
-module github.com/dkushche/roothazardlab_backend
+module github.com/dkushche/auth_service
 
 go 1.17
 
