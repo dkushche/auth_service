@@ -1,4 +1,4 @@
-FROM golang:1.17-bullseye AS build
+FROM golang:1.18.0-bullseye AS build
 
 WORKDIR /app
 
@@ -9,6 +9,6 @@ RUN go build -a -ldflags "-linkmode external -extldflags '-static' -s -w"
 
 FROM scratch
 
-COPY --from=build /app/roothazardlab_backend /usr/bin/
+COPY --from=build /app/auth_service /usr/bin/
 
-ENTRYPOINT ["roothazardlab_backend"]
+ENTRYPOINT ["auth_service"]
