@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/base64"
+	"flag"
 	"log"
 	"net/http"
 	"os"
@@ -122,10 +123,14 @@ func prepareStorage(subDir string) {
 }
 
 func main() {
+	storageDir := flag.String("storage-dir", "", "path where to store dir")
+	flag.Parse()
+
 	router := createRouter()
 
-	prepareStorage("storage/logs")
-	file, err := os.OpenFile("storage/logs/logs.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+	prepareStorage(*storageDir + "/logs")
+	file, err := os.OpenFile(*storageDir+"/logs/logs.txt",
+		os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
 	if err != nil {
 		panic(err)
 	}
@@ -134,15 +139,15 @@ func main() {
 
 	defer file.Close()
 
-	prepareStorage("storage/db")
-	err = account.InitDatabase("storage/db/accounts.db")
+	prepareStorage(*storageDir + "/db")
+	err = account.InitDatabase(*storageDir + "/db/accounts.db")
 	if err != nil {
 		panic(err)
 	}
 	log.Println("Database initialized")
 
-	prepareStorage("storage/keys")
-	err = token.InitKey("storage/keys/auth_priv.pem")
+	prepareStorage(*storageDir + "/keys")
+	err = token.InitKey(*storageDir + "/keys/auth_priv.pem")
 	if err != nil {
 		panic(err)
 	}

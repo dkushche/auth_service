@@ -11,4 +11,4 @@ FROM scratch
 
 COPY --from=build /app/auth_service /usr/bin/
 
-ENTRYPOINT ["auth_service"]
+ENTRYPOINT ["auth_service", "-storage-dir", "/mnt/storage"]
